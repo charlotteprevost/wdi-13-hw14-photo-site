@@ -10,12 +10,17 @@
 	<h5>
 		<a href="/users/<%=user.id%>/edit">Edit User</a>
 		<br>
-		<a href="">Delete User</a>
+		<br>
+
+		<form action="/users/<%=user.id%>?_method=DELETE" method="POST">
+			<input type="submit" value="Delete <%=user.username%>">
+		</form>
 	</h5>
 
 		<!-- HERE WE DISPLAY ALL THE USER'S PICTURES -->
 		<% for (let i = 0; i < user.photos.length; i++){ %>
-			<img src="">
+	        <label for="photo">Username:</label>
+			<img src="<%=user.photos[i].url%>" id="photo">
 		<%}%>
 
 

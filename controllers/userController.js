@@ -12,10 +12,15 @@ const User = require('../models/userModel.js');
 
 router.get('/', (req, res) => {
 	User.find({}, (err, allUsers) => {
-		res.render('../views/userViews/index.ejs', {
-			users: allUsers
-		});
-	})
+		if (err) {console.log(`-------------------- Error --------------------\n`, err);}
+			else {
+				console.log(`-------------------- allUsers --------------------\n`, allUsers);
+				res.render('../views/userViews/index.ejs', {
+					users: allUsers
+				});
+			}
+		}
+	)
 });
 
 
@@ -38,8 +43,10 @@ router.get('/:id', (req, res) => {
 					user: foundUser
 				});
 			}
-		})
-})
+		}
+	)
+});
+
 
 // ******************** USER EDIT ROUTE **********************
 
@@ -53,9 +60,10 @@ router.get('/:id/edit', (req, res) => {
 					user: editUser
 				});
 			}
-		})
+		}
+	)
+});
 
-})
 
 // ******************** USER CREATE ROUTE ********************
 
@@ -67,8 +75,10 @@ router.post('/', (req, res) => {
 				console.log(`-------------------- createdUser --------------------\n`, createdUser);
 				res.redirect('/users');
 			}
-		})
-})
+		}
+	)
+});
+
 
 // ******************** USER UPDATE ROUTE ********************
 
@@ -80,11 +90,31 @@ router.put('/:id', (req, res) => {
 				console.log(`-------------------- updateUser --------------------\n`, updateUser);
 				res.redirect('/users');
 			}		
-		})
-})
+		}
+	)
+});
 
 
 // ******************** USER DELETE ROUTE ********************
+
+router.delete('/:id', (req, res) => {
+	User.findByIdAndDelete(req.params.id,
+		(err, deletedAuthor) => {
+			if (err) {console.log(`-------------------- Error --------------------\n`, err);}
+			else {
+				console.log(`-------------------- deletedAuthor --------------------\n`, deletedAuthor);
+				res.redirect('/users');
+			}
+		}
+	)
+});
+// WHY is THIS^ deleting the FIRST user?
+
+
+
+
+
+
 
 
 

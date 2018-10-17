@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<nav><a href="http://localhost:3000/">Home</a><br><a href="http://localhost:3000/photos">Photo Index</a></nav>
+
+	<h1>PHOTOS</h1>
+
+	<ul>
+		<% for (let i = 0; i < photos.length; i++){ %>
+			<img src="<%=photos[i].url%>">
+		<%}%>
+	</ul>
+
+	<a href="/photos/new">Add Photo</a>
+
+</body>
+</html>

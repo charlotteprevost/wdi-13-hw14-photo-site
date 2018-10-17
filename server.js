@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 // Controllers
 const userController = require('./controllers/userController.js');
 app.use('/users', userController);
+const photoController = require('./controllers/photoController.js');
+app.use('/photos', photoController);
 
 
 // Home Page
