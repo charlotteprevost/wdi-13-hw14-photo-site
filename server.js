@@ -6,6 +6,8 @@ const app = express();
 require('./db/db.js');
 
 // MiddleWare
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
 
 // Controllers
 const userController = require('./controllers/userController.js');

@@ -37,8 +37,9 @@ router.get('/new', (req, res) => {
 router.post('/', (req, res) => {
 	User.create(req.body,
 		(err, createdUser) => {
-			if (err) {console.log(`-------------------- Error --------------------`, err);}
+			if (err) {console.log(`-------------------- Error --------------------\n`, err);}
 			else {
+				console.log(`-------------------- createdUser --------------------\n`, createdUser);
 				res.redirect('/users');
 			}
 		})

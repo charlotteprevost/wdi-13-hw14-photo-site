@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
 	username: {type: String, require: true, index: {unique: true}},
 	password: {type: String, required: true},
 	location: String,
-	dob: Date
+	dob: String
 });
 
 /* Here maybe use https://stackoverflow.com/questions/14588032/mongoose-password-hashing
