@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const Photo = require('./photoModel.js')
+
 const userSchema = new mongoose.Schema({
 	username: {type: String, require: true, index: {unique: true}},
 	password: {type: String, required: true},
