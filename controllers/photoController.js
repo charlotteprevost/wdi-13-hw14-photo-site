@@ -29,7 +29,25 @@ router.get('/new', (req, res) => {
 	});
 });
 
+
 // ******************** PHOTO SHOW ROUTE **********************
+
+router.get('/:id', (req, res) => {
+	Photo.finById(req.params.id, (err, foundPhoto) => {
+		User.findOne({'photos._id': req.params.id}, (err, foundUser) => {
+			if (err) {console.log(`---------- Error ----------\n`, err);}	
+			else {
+				console.log(`---------- foundUser ----------\n`, foundUser);
+				res.render('../views/photoViews/show.ejs', {
+					photo: foundPhoto,
+					user: foundUser
+				})
+			}
+		});
+	});
+});
+
+
 // ******************** PHOTO EDIT ROUTE **********************
 // ******************** PHOTO CREATE ROUTE ********************
 
@@ -40,7 +58,7 @@ router.post('/', (req, res) => {
 			else {
 				console.log(`---------- Created PHOTO ----------\n`, createdPhoto);
 				foundUser.photos.push(createdPhoto);
-				found.save((err, data)=>{
+				foundUser.save((err, data)=>{
 					res.redirect('/photos');					
 				})
 			}	
