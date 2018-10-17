@@ -33,7 +33,7 @@ router.get('/new', (req, res) => {
 // ******************** PHOTO SHOW ROUTE **********************
 
 router.get('/:id', (req, res) => {
-	Photo.finById(req.params.id, (err, foundPhoto) => {
+	Photo.findById(req.params.id, (err, foundPhoto) => {
 		User.findOne({'photos._id': req.params.id}, (err, foundUser) => {
 			if (err) {console.log(`---------- Error ----------\n`, err);}	
 			else {

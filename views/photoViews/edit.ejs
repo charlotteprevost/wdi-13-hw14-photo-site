@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<nav>
+		<a href="http://localhost:3000/">Home</a><br>
+		<a href="http://localhost:3000/photos">Photo Index</a>
+	</nav>
+
+	<form action="/photos/<%=photo.id%>?_method=PUT" method="POST">
+
+        <select name="userId">
+          <%for (let i = 0; i < users.length; i++){ %>
+               <option value="<%=users[i].id%>"
+               	<% if (users[i].id.toString() === photoAuthor.id.toString()){%>
+               	selected
+               	<%}%>
+               	><%=users[i].name%></option>
+          <%}%>
+        </select>
+        <br>
+
+	    <div>
+	        <label for="title">Title:</label>
+	        <input type="text" id="title" name="title" value="photo.title"/>
+	    </div>
+	    <br/>
+
+	    <div>
+	        <label for="url">URL:</label>
+	        <input type="text" id="url" name="url" value="photo.url"/>
+	    </div>
+	    <br/>
+
+	    <input type="submit" value="Edit Photo">
+
+    </form>
+	<br>
+	<br>
+
+</body>
+</html>

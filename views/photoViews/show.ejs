@@ -4,11 +4,15 @@
 	<title></title>
 </head>
 <body>
-	
+
 	<nav><a href="http://localhost:3000/">Home</a><br><a href="http://localhost:3000/photos">Photo Index</a></nav>
 
 	<h1><%=photo.title%></h1>
 	<h4>By: <a href="/users/<%=user.id%>"><%=user.name%></a></h4>
+	<div>
+		<label for="photo"><%=photo.title%></label>
+		<img src="<%=photo.url%>" id="photo">
+	</div>
 	<h5>
 		<a href="/photos/<%=photo.id%>/edit">Edit Photo Post</a>
 		<br>
