@@ -68,6 +68,7 @@ router.get('/:id/edit', (req, res) => {
 	});
 });
 
+
 // ******************** PHOTO CREATE ROUTE ********************
 
 router.post('/', (req, res) => {
@@ -79,11 +80,11 @@ router.post('/', (req, res) => {
 				foundUser.photos.push(createdPhoto);
 				foundUser.save((err, data)=>{
 					res.redirect('/photos');					
-				})
+				});
 			}	
-		})
-	})
-})
+		});
+	});
+});
 
 // ******************** PHOTO UPDATE ROUTE ********************
 // ******************** PHOTO DELETE ROUTE ********************
