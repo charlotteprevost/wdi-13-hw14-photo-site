@@ -43,6 +43,19 @@ router.get('/:id', (req, res) => {
 
 // ******************** USER EDIT ROUTE **********************
 
+router.get('/:id/edit', (req, res) => {
+	User.findById(req.params.id,
+		(err, editUser) => {
+			if (err){console.log(`-------------------- Error --------------------\n`, err);}
+			else {
+				console.log(`-------------------- editUser --------------------\n`, editUser);
+				res.render('../views/userViews/edit.ejs', {
+					user: editUser
+				});
+			}
+		})
+
+})
 
 // ******************** USER CREATE ROUTE ********************
 
@@ -58,6 +71,17 @@ router.post('/', (req, res) => {
 })
 
 // ******************** USER UPDATE ROUTE ********************
+
+router.put('/:id', (req, res) => {
+	User.findByIdAndUpdate(req.params.id, req.body,
+		(err, updateUser) => {
+			if (err) {console.log(`-------------------- Error --------------------\n`, err);}
+			else {
+				console.log(`-------------------- updateUser --------------------\n`, updateUser);
+				res.redirect('/users');
+			}		
+		})
+})
 
 
 // ******************** USER DELETE ROUTE ********************

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<nav><a href="http://localhost:3000/">Home</a><br><a href="http://localhost:3000/users">User Index</a></nav>
+
+	<h3>Edit <%=user.username%> Info</h3>
+
+    <form action="/users/<%=user.id%>?_method=PUT" method="POST">
+
+	    <div>
+	        <label for="username">Username:</label>
+	        <input type="text" id="username" name="username" value="<%=user.username%>" />
+	    </div>
+	    <br/>
+	    <div>
+	        <label for="password">Password:</label>
+	        <input type="text" id="password" name="password" value="<%=user.password%>" />
+	    </div>
+	    <br/>
+	     <div>
+	        <label for="location">Location:</label>
+	        <input type="text" id="location" name="location" value="<%=user.location%>" />
+	    </div>
+	    <br/>
+	    <div>
+	        <label for="dob">Date of Birth:</label>
+	        <input type="text" id="dob" name="dob" placeholder="DD/MM/YYYY" value="<%=user.dob%>" />
+	    </div>
+	    <br>
+
+	    <ul>
+	    			<!-- HERE WE DISPLAY ALL THE USER'S PICTURES -->
+		    <li>
+		        <label for="photo">PHOTO TITLE</label>
+		        <img src="" name="photo">
+		    </li>	
+	    </ul>
+	    <br/>
+	    <input type="submit" value="Edit User">
+
+    </form>
+
+</body>
+</html>

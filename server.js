@@ -2,24 +2,27 @@
 const express = require('express');
 const app = express();
 
+
 // Database
 require('./db/db.js');
 
+
 // MiddleWare
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
-
-
-// Home Page
-app.get('/', (req, res) => {
-	res.render("../views/home.ejs")
-});
 
 
 // Controllers
 const userController = require('./controllers/userController.js');
 app.use('/users', userController);
 
+
+// Home Page
+app.get('/', (req, res) => {
+	res.render("../views/home.ejs")
+});
 
 
 // PORT
