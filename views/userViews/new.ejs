@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<h1>Like this Blog?<br>Sign up! <br></h1>
+	<h4>(Create New User)</h4>
+
+<fieldset>
+    <legend>Sign up</legend>
+    <form action="/users" method="POST">
+
+	    <div>
+	        <label for="username">Username:</label>
+	        <input type="text" id="username" name="username" />
+	    </div>
+	    <br/>
+	    <div>
+	        <label for="password">Password:</label>
+	        <input type="password" id="password" name="password" />
+	    </div>
+	    <br/>
+	     <div>
+	        <label for="location">Location:</label>
+	        <input type="text" id="location" name="location" />
+	    </div>
+	    <br/>
+	    <div>
+	        <label for="dob">Date of Birth:</label>
+	        <input type="text" id="dob" name="dob" placeholder="DD/MM/YYYY"/>
+	    </div>
+	    <br/>
+	    <input type="submit" value="Sign up">
+
+    </form>
+</fieldset>
+
+</body>
+</html>

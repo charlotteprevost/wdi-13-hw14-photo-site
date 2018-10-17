@@ -21,6 +21,10 @@ router.get('/', (req, res) => {
 
 // ******************** USER NEW ROUTE ***********************
 
+router.get('/new', (req, res) => {
+	res.render('../views/userViews/new.ejs')
+});
+
 
 // ******************** USER SHOW ROUTE **********************
 
@@ -30,6 +34,15 @@ router.get('/', (req, res) => {
 
 // ******************** USER CREATE ROUTE ********************
 
+router.post('/', (req, res) => {
+	User.create(req.body,
+		(err, createdUser) => {
+			if (err) {console.log(`-------------------- Error --------------------`, err);}
+			else {
+				res.redirect('/users');
+			}
+		})
+})
 
 // ******************** USER UPDATE ROUTE ********************
 
