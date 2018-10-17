@@ -49,6 +49,25 @@ router.get('/:id', (req, res) => {
 
 
 // ******************** PHOTO EDIT ROUTE **********************
+
+router.get('/:id/edit', (req, res) => {
+	Photo.findById(req.params.id, (err, foundPhoto) => {
+		User.find({}, (err, allUsers) => {
+			User.findOne({'photos._id': req.params.id}, (err, foundPhotoUser) => {
+				if (err) {console.log(`---------- Error ----------\n`, err);}	
+				else {
+					console.log(`---------- foundPhotoUser ----------\n`, foundPhotoUser);
+					res.render('../views/photoViews/edit.ejs', {
+						photo: foundPhoto,
+						users: allUsers,
+						photoUser: foundPhotoUser
+					});
+				}
+			});
+		});
+	});
+});
+
 // ******************** PHOTO CREATE ROUTE ********************
 
 router.post('/', (req, res) => {
