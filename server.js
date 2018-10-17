@@ -9,9 +9,18 @@ require('./db/db.js');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
+
+// Home Page
+app.get('/', (req, res) => {
+	res.render("../views/home.ejs")
+});
+
+
 // Controllers
 const userController = require('./controllers/userController.js');
 app.use('/users', userController);
+
+
 
 // PORT
 app.listen(3000, () => {

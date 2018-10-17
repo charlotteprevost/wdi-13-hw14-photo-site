@@ -28,6 +28,18 @@ router.get('/new', (req, res) => {
 
 // ******************** USER SHOW ROUTE **********************
 
+router.get('/:id', (req, res) => {
+	User.findById(req.params.id,
+		(err, foundUser) => {
+			if (err) {console.log(`-------------------- Error --------------------\n`, err);}
+			else {
+				console.log(`-------------------- foundUser --------------------\n`, foundUser);
+				res.render('../views/userViews/show.ejs', {
+					user: foundUser
+				});
+			}
+		})
+})
 
 // ******************** USER EDIT ROUTE **********************
 
