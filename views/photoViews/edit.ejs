@@ -14,8 +14,8 @@
 
         <select name="userId">
           <%for (let i = 0; i < users.length; i++){ %>
-               <option value="<%=users[i].id%>"
-               	<% if (users[i].id.toString() === photoAuthor.id.toString()){%>
+               <option value="<%=users[i]._id%>"
+               	<% if (users[i].id.toString() === photoUser.id.toString()){%>
                	selected
                	<%}%>
                	><%=users[i].name%></option>
@@ -25,17 +25,18 @@
 
 	    <div>
 	        <label for="title">Title:</label>
-	        <input type="text" id="title" name="title" value="photo.title"/>
+	        <input type="text" id="title" name="title" value="<%=photo.title%>"/>
 	    </div>
 	    <br/>
 
 	    <div>
 	        <label for="url">URL:</label>
-	        <input type="text" id="url" name="url" value="photo.url"/>
+	        <input type="text" id="url" name="url" value="<%=photo.url%>"/>
+    		<img src="<%=photo.url%>">
 	    </div>
 	    <br/>
 
-	    <input type="submit" value="Edit Photo">
+	    <input type="submit" value="Submit Edit(s)">
 
     </form>
 	<br>

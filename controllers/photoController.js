@@ -8,6 +8,7 @@ const User = require('../models/userModel.js');
 // ************************** RESTFUL ROUTES **************************
 // ********************************************************************
 
+
 // ******************** PHOTO INDEX ROUTE *********************
 
 router.get('/', (req, res) => {
@@ -23,6 +24,7 @@ router.get('/', (req, res) => {
 
 router.get('/new', (req, res) => {
 	User.find({}, (err, allUsers) => {
+		console.log(`allUsers\n`,allUsers);
 			res.render('../views/photoViews/new.ejs', {
       users: allUsers
     });
@@ -86,10 +88,26 @@ router.post('/', (req, res) => {
 	});
 });
 
+
 // ******************** PHOTO UPDATE ROUTE ********************
+
+router.put('/:id', (req, res) => {
+	Photo.findByIdAndUpdate(req.params.id, (err, updatePhoto) => {
+		User.findById(req.body.userId, (err, foundUser) => {
+			Photo.create(req.body, (err, createdPhoto) => {
+				foundUser.photos.push(createdPhoto);
+				foundUser.save((err, data) => {
+					res.redirect('/photos')
+				});
+			});
+		});
+	});
+});
+
+
 // ******************** PHOTO DELETE ROUTE ********************
 
-
+// router.delete
 
 
 

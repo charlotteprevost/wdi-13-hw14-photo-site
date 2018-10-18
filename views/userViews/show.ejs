@@ -19,7 +19,7 @@
 
 		<!-- HERE WE DISPLAY ALL THE USER'S PICTURES -->
 		<% for (let i = 0; i < user.photos.length; i++){ %>
-	        <label for="photo">Username:</label>
+	        <label for="photo">Title: <%=user.photos[i].title%></label>
 			<img src="<%=user.photos[i].url%>" id="photo">
 		<%}%>
 
