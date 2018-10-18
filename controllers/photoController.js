@@ -107,7 +107,22 @@ router.put('/:id', (req, res) => {
 
 // ******************** PHOTO DELETE ROUTE ********************
 
-// router.delete
+router.delete('/:id', (req, res) => {
+	Photo.findByIdAndDelete(req.params.id, (err, deletedPhoto) => {
+		if (err) {console.log(`---------- Error ----------\n`, err);}	
+		else {
+			console.log(`---------- Deleted PHOTO ----------\n`, deletedPhoto);
+
+			// Find user and delete photo from that user
+			User.findOne({'photos._id': req.params.id}, (err, foundUser) => {
+				foundUser.photos.id(req.params.id).remove();
+					foundUser.save((err, data)=>{
+						res.redirect('/photos');					
+					});	
+			});
+		}	
+	})
+})
 
 
 

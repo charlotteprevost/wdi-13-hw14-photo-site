@@ -11,14 +11,14 @@
 	<h1>PHOTOS</h1>
 	<h4><a href="/photos/new">Add Photo</a></h4>
 
-	<ul>
-		<% for (let i = 0; i < photos.length; i++){ %>
+	<% for (let i = 0; i < photos.length; i++){ %>
+		<div>
 			<label for="photo">
 				<a href="/photos/<%=photos[i].id%>"><%=photos[i].title%></a>
-			</label>
+			</label><br>
 			<img src="<%=photos[i].url%>" id="photo">
-		<%}%>
-	</ul>
+		</div>
+	<%}%>
 
 
 </body>

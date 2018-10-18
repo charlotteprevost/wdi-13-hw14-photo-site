@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const Photo = require('../models/photoModel.js');
 const User = require('../models/userModel.js');
 
 
@@ -89,10 +90,20 @@ router.put('/:id', (req, res) => {
 // ******************** USER DELETE ROUTE ********************
 
 router.delete('/:id', (req, res) => {
-	User.findByIdAndDelete(req.params.id, (err, deletedAuthor) => {
+	User.findByIdAndDelete(req.params.id, (err, deletedUser) => {
 		if (err) {console.log(`-------------------- Error --------------------\n`, err);}
 		else {
-			console.log(`-------------------- deletedAuthor --------------------\n`, deletedAuthor);
+			console.log(`-------------------- deletedUser --------------------\n`, deletedUser);
+
+			// Must also delete all photos associated to this user
+			// Store those photoIds in a variable
+			const photoIds = [];
+
+			for (let i = 0; i < deletedUser.photos.length; i++){
+				photoIds.push(deletedUser.photos[i].id);
+			}
+
+			Photo.deleteMany({_id: {$in: photoIds}});
 			res.redirect('/users');
 		}
 	})

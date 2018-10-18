@@ -18,7 +18,7 @@
                	<% if (users[i].id.toString() === photoUser.id.toString()){%>
                	selected
                	<%}%>
-               	><%=users[i].name%></option>
+               	><%=users[i].username%></option>
           <%}%>
         </select>
         <br>
@@ -31,7 +31,7 @@
 
 	    <div>
 	        <label for="url">URL:</label>
-	        <input type="text" id="url" name="url" value="<%=photo.url%>"/>
+	        <input type="text" id="url" name="url" value="<%=photo.url%>"/><br>
     		<img src="<%=photo.url%>">
 	    </div>
 	    <br/>
